@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Chatbot</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</head>
+
+<body>
+   <div class="container">
+      <div class="row">
+  <div class="col-md-12">
+            <h1>Continue your Chatting here</h1>
+
+        <div class="row text-center">
+                   <div class="col-md-6 col-sm-6 margin-bottom-40">
+          <a href="{{ url_for('poem') }}" class="btn btn-mod btn-border btn-circle btn-large">
+            Home
+          </a>
+        </div>   <div class="col-md-6 col-sm-6 margin-bottom-40">
+          <a href="{{ url_for('chat') }}" class="btn btn-mod btn-border btn-circle btn-large">
+            Chat
+          </a>
+        </div>
+
+
+
+            </div>
+
+     <div class="chat-container">
+
+         {% for message in output %}
+            <div class="message {{ message.role }}">
+               <p>{{ message.content }}</p>
+            </div>
+         {% endfor %}
+      </div>
+      <form method="post" action="/chat">
+         <input type="text" name="user" id="user_input" placeholder="Enter your message" required>
+         <button type="submit">Send</button>
+      </form>
+         </div>
+      </div>
+   </div>
+</body>
+
+</html>

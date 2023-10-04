@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Poem Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+      <style>
+
+      </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+  <h1 class="title" align="center"> Dating App Message Generator
+  </h1>
+            <div class="row text-center">
+                   <div class="col-md-6 col-sm-6 margin-bottom-40">
+          <a href="{{ url_for('poem') }}" class="btn btn-mod btn-border btn-circle btn-large">
+            Home
+          </a>
+        </div>   <div class="col-md-6 col-sm-6 margin-bottom-40">
+          <a href="{{ url_for('chat') }}" class="btn btn-mod btn-border btn-circle btn-large">
+            Chat
+          </a>
+        </div>
+
+
+
+            </div>
+            <div class="container">
+
+  <form method="POST">
+    <div class="form-group">
+      <h2> Enter Some details</h2>
+    </div>
+     <div class="form-group">
+       <label for="gender"> Talking With</label>
+       <select name="gender" id="gender"  class="form-control" >
+         <option >He</option>
+         <option>She</option>
+     </select>
+     </div>
+    <div class="form-group">
+       <label for="start"> How do you want to Start</label>
+       <select name="start" id="start"  class="form-control" >
+         <option >Poem</option>
+         <option >Pickup Line</option>
+         <option >Starting Message</option>
+
+     </select>
+     </div>
+    <div class="form-group">
+             <label for="age"> His/Her Age</label>
+    <input class="form-control" type="text" name="age" id="age">
+    </div>
+          <div class="form-group">
+      <label for="mood"> Mood</label>
+               <select name="mood" id="mood"  class="form-control" >
+         <option >Academic</option>
+         <option >Analytical</option>
+         <option >Argumentative</option>
+         <option >Conversational</option>
+         <option >Creative</option>
+         <option >Descriptive</option>
+         <option >Epigrammatic</option>
+         <option >Epistolary</option>
+         <option >Informative</option>
+         <option >Instructive</option>
+         <option >Journalistic</option>
+         <option >Metaphorical</option>
+         <option >Narrative</option>
+         <option >Persuasive</option>
+         <option selected >Poetic</option>
+         <option >Satirical</option>
+         <option >Technical</option>
+         <option >Authoritative</option>
+         <option >Clinical</option>
+         <option >Cold</option>
+         <option >Confident</option>
+         <option >Cynical</option>
+         <option >Emotional</option>
+         <option >Empathetic</option>
+         <option >Formal</option>
+         <option >Friendly</option>
+         <option >Humorous</option>
+         <option >Informal</option>
+         <option >Ironic</option>
+         <option >Optimistic</option>
+         <option >Pessimistic</option>
+         <option >Playful</option>
+         <option >Sarcastic</option>
+         <option >Serious</option>
+         <option >Sympathetic</option>
+         <option >Tentative</option>
+         <option >Warm</option>
+     </select>
+    </div>  <div class="form-group">
+      <label for="about"> Profile details</label>
+    <textarea class="form-control" type="text" name="about" id="about">
+        input personal details here...
+    </textarea>
+    </div>
+            <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
+
+     </form>
+</div>
+        </div>
+      </div>
+
+         <div class="row">
+        <div class="col-md-12">
+                <div class="chat-container">
+                    <label for="text"> Your output will show here</label>
+
+           {% if output %}
+    <textarea id="text">{{ output|safe }}</textarea>
+    <a href="{{ url_for('chat') }}" class="btn btn-primary" style="color: white; text-decoration: none;">Go to Chat</a>
+{% else %}
+    <textarea id="text">{{ output|safe }}</textarea>
+{% endif %}
+                </div>
+            </div>
+            </div>
+
+    </div>
+  </body>
+</html>
